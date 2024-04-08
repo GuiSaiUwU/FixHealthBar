@@ -171,7 +171,6 @@ try:
                             print(f'File Hash: "{chunk.hash}" THROWN AN EXCEPTION')
                     chunk_datas.append(chunk.data)
                     chunk_hashes.append(chunk.hash)
-                    chunk.free_data()
             
             wad = WAD()
             wad.chunks = [WADChunk.default() for _ in range(len(chunk_hashes))]
