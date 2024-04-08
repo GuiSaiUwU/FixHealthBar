@@ -169,9 +169,9 @@ try:
                             chunk.data = bin_file.write(path='', raw=True)
                         except Exception:
                             print(f'File Hash: "{chunk.hash}" THROWN AN EXCEPTION')
-
                     chunk_datas.append(chunk.data)
                     chunk_hashes.append(chunk.hash)
+                    chunk.free_data()
             
             wad = WAD()
             wad.chunks = [WADChunk.default() for _ in range(len(chunk_hashes))]
@@ -218,9 +218,11 @@ try:
     elif path.isfile(inpt) and inpt.endswith('.wad.client'):
         # User are using a .wad file
         try:
-            wad_file = parse_wad(inpt)
-            wad_file.write(inpt)
-            print("End of Script.")
+            print(f"Parsing Wad: {inpt}...")
+            wad_bytes = parse_wad(inpt)
+            print("Writing .wad file :D")
+            with open(inpt, 'wb') as f:
+                f.write(wad_bytes)
         except Exception as e:
             print(e, '\nSomething went wrong lol uwu')
             input()
