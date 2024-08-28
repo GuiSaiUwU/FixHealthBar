@@ -72,8 +72,8 @@ try:
                             if has_unithealth_flag:
                                 for inside_healthbar in s_property.data:
                                     if inside_healthbar.hash == BIN_HASH["UnitHealthBarStyle"]:
-                                        print(f"Just changed the value from {inside_healthbar.data} to 10 UwU!")
-                                        inside_healthbar.data = 10 # WoW magic changed the value to 10 omfg
+                                        print(f"Just changed the value from {inside_healthbar.data} to 11 UwU!")
+                                        inside_healthbar.data = 11 # WoW magic changed the value to 11 omfg
                             else:
                                 # Wtf you have HealthBarData but dont have UnitHealthBarStyle?
                                 s_property.data.append(UnitHealthBarStyle)
