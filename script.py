@@ -11,6 +11,7 @@ try:
     from LtMAO.wadfile import WAD, WADChunk
 
 
+    HEALTHBAR_NUMBER = 11
     def compute_hash(s: str):
         """
         Generaters FN1a lowered hash from a string
@@ -48,7 +49,7 @@ try:
         UnitHealthBarStyle = BINField()
         UnitHealthBarStyle.hash = BIN_HASH["UnitHealthBarStyle"]
         UnitHealthBarStyle.type = BINType.U8
-        UnitHealthBarStyle.data = 10
+        UnitHealthBarStyle.data = HEALTHBAR_NUMBER
 
         HealthBarData = BINField()
         HealthBarData.hash = BIN_HASH['HealthBarData']
@@ -72,8 +73,8 @@ try:
                             if has_unithealth_flag:
                                 for inside_healthbar in s_property.data:
                                     if inside_healthbar.hash == BIN_HASH["UnitHealthBarStyle"]:
-                                        print(f"Just changed the value from {inside_healthbar.data} to 11 UwU!")
-                                        inside_healthbar.data = 11 # WoW magic changed the value to 11 omfg
+                                        print(f"Just changed the value from {inside_healthbar.data} to {HEALTHBAR_NUMBER} UwU!")
+                                        inside_healthbar.data = HEALTHBAR_NUMBER # WoW magic changed the value to HEALTHBAR_NUMBER omfg
                             else:
                                 # Wtf you have HealthBarData but dont have UnitHealthBarStyle?
                                 s_property.data.append(UnitHealthBarStyle)
